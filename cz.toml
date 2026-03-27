@@ -1,0 +1,89 @@
+[tool.commitizen]
+name = "cz_customize"
+use_shortcuts = true
+tag_format = "$version"
+version_scheme = "semver"
+version = "0.0.1"
+update_changelog_on_bump = true
+major_version_zero = true
+
+
+[tool.commitizen.customize]
+# Commit message: type(scope): subject; scope optional
+message_template = """{{ prefix }}{% if scope %}({{ scope }}){% endif %}{% if is_breaking_change %}!{% endif %}: {{ subject }}{% if body %}
+
+{{ body }}{% endif %}{% if is_breaking_change and footer %}
+
+BREAKING CHANGE: {{ footer }}{% elif footer %}
+
+{{ footer }}{% endif %}"""
+example = "feat(post): add draft for xxx"
+schema = "<type>(<scope>): <subject>\n<BLANK LINE>\n<body>\n<BLANK LINE>\n(BREAKING CHANGE: )<footer>"
+schema_pattern = "(?s)(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\\(\\S+\\))?!?: ([^\\n\\r]+)((\\n\\n.*)|(\\s*))?$"
+
+# Bump & changelog: conventional commits + chore
+bump_pattern = "^((BREAKING[\\- ]CHANGE|\\w+)(\\(.+\\))?!?):"
+bump_map = { "^.+!$" = "MAJOR", "^BREAKING[\\- ]CHANGE" = "MAJOR", "^feat" = "MINOR", "^fix" = "PATCH", "^refactor" = "PATCH", "^perf" = "PATCH", "^chore" = "PATCH" }
+bump_map_major_version_zero = { "^.+!$" = "MINOR", "^BREAKING[\\- ]CHANGE" = "MINOR", "^feat" = "MINOR", "^fix" = "PATCH", "^refactor" = "PATCH", "^perf" = "PATCH", "^chore" = "PATCH" }
+commit_parser = "^(?P<change_type>feat|fix|docs|style|refactor|perf|test|build|ci|chore)(?:\\((?P<scope>[^()\\r\\n]*)\\))?!?:\\s(?P<message>.*)?"
+changelog_pattern = "^((BREAKING[\\- ]CHANGE|\\w+)(\\(.+\\))?!?):"
+change_type_map = { "feat" = "Feat", "fix" = "Fix", "docs" = "Docs", "style" = "Style", "refactor" = "Refactor", "perf" = "Perf", "test" = "Test", "build" = "Build", "ci" = "CI", "chore" = "Chore" }
+change_type_order = ["BREAKING CHANGE", "Feat", "Fix", "Refactor", "Perf", "Docs", "Style", "Test", "Build", "CI", "Chore"]
+
+# --- Questions: type (prefix) + scope + subject/body/footer ---
+
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "prefix"
+message = "Select the type of change you are committing"
+choices = [
+  { value = "feat", name = "feat: A new feature. Correlates with MINOR in SemVer", key = "f" },
+  { value = "fix", name = "fix: A bug fix. Correlates with PATCH in SemVer", key = "x" },
+  { value = "docs", name = "docs: Documentation only changes", key = "d" },
+  { value = "style", name = "style: Changes that do not affect the meaning of the code", key = "s" },
+  { value = "refactor", name = "refactor: A code change that neither fixes a bug nor adds a feature", key = "r" },
+  { value = "perf", name = "perf: A code change that improves performance", key = "p" },
+  { value = "test", name = "test: Adding or correcting tests", key = "t" },
+  { value = "build", name = "build: Build system or external dependencies", key = "b" },
+  { value = "ci", name = "ci: CI configuration and scripts", key = "c" },
+  { value = "chore", name = "chore: Maintenance, tooling, or other non-feature/fix changes", key = "h" },
+]
+
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "scope"
+message = "Scope (content type / project / site). Press enter to skip if not applicable"
+choices = [
+  { value = "", name = "— (skip)" },
+  { value = "post", name = "post: general post" },
+  { value = "projects", name = "projects: project page" },
+  { value = "thesis", name = "thesis: Master's thesis / research" },
+  { value = "smart-room", name = "smart-room: Smart Room project" },
+  { value = "green-energy", name = "green-energy: green energy trading platform" },
+  { value = "learn", name = "learn: Learn concepts (DR / ComMA / Blockchain)" },
+  { value = "open-source", name = "open-source: Open Source contributions" },
+  { value = "theme", name = "theme: theme customization / styling / updating" },
+  { value = "site", name = "site: site-wide / layout (Home, Nav, About, i18n, theme, config, layout…)" },
+  { value = "tooling", name = "tooling: development tooling and workflow (makefile, commitizen, lint, scripts)" },
+]
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "subject"
+message = "Write a short, imperative summary of the change (lower case, no period)\n"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "body"
+message = "Provide additional contextual information about the code changes:(press [enter] to skip)\n"
+
+[[tool.commitizen.customize.questions]]
+type = "confirm"
+name = "is_breaking_change"
+message = "Is this a BREAKING CHANGE? (Correlates with MAJOR in SemVer)"
+default = false
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "footer"
+message = "Footer. Information about Breaking Changes and reference issues that this commit closes: (press [enter] to skip)\n"
