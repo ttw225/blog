@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Hugo build output
+public/
+resources/
+.hugo_build.lock
+
+# Build / output (legacy, kept for safety)
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+*.local
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and cache
+*.log
+npm-debug.log*
+.cache/
+.parcel-cache/
+.turbo/
+
+# Editor / IDE
+# .idea/
+# .vscode/
+# *.swp
+# *.swo
