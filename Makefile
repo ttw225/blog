@@ -1,7 +1,7 @@
 # Project task entrypoint. Run `make` or `make help` to list targets.
 # Add "## description" at end of a target line to show it in help.
 
-.PHONY: help dev build theme-update post
+.PHONY: help dev build check theme-update post
 
 # First target is default
 help: ## Show this help (default)
@@ -14,6 +14,16 @@ dev: ## Start Hugo dev server for local preview
 
 build: ## Build site to public/ (--gc --minify)
 	hugo --gc --minify
+
+check: ## Pre-launch: build with path warnings + verify key artifacts
+	hugo --gc --minify --printPathWarnings
+	test -f public/index.html
+	test -f public/en/index.html
+	test -f public/robots.txt
+	test -f public/sitemap.xml
+	test -f public/index.xml
+	test -f public/en/index.xml
+	@echo "OK. Manual steps: see docs/PRELAUNCH.md"
 
 theme-update: ## Update Blowfish theme submodule (--remote --merge)
 	git submodule update --remote --merge
