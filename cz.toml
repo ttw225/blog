@@ -1,12 +1,14 @@
 [tool.commitizen]
 name = "cz_customize"
 use_shortcuts = true
-tag_format = "$version"
+tag_format = "v$version"
 version_scheme = "semver"
 version = "0.0.1"
 update_changelog_on_bump = true
 major_version_zero = true
-
+version_files = [
+  'config/_default/hugo.toml:\[versions\."v',
+]
 
 [tool.commitizen.customize]
 # Commit message: type(scope): subject; scope optional

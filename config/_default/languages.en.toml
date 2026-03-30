@@ -1,0 +1,27 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 2
+title = "Peter Wang"
+contentDir = "content/en"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  dateFormat = "2 January 2006"
+  description = "Peter's blog and portfolio"
+  copyright = "© { year } Peter. All rights reserved."
+
+[params.author]
+  name = "Peter Wang"
+  email = "peter86225+web@gmail.com"
+  image = "img/cat.jpg"
+  imageQuality = 96
+  headline = "Backend Engineer | Problem Solver | PyCon Taiwan Volunteer"
+  bio = "Chi-Sung (Peter) Wang, M.S. CS (NCKU). I build reliable backend integrations—API contracts, workflows, and data models—with idempotency, retries, and traceability. PyCon Taiwan volunteer (Program & PR)."
+  links = [
+    { email = "mailto:peter86225+blog@gmail.com" },
+    { link = "https://ttw225.github.io/blog/" },
+    { github = "https://github.com/ttw225" },
+    { linkedin = "https://www.linkedin.com/in/chisung-wang/" },
+  ]
