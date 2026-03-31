@@ -1,7 +1,7 @@
 # Project task entrypoint. Run `make` or `make help` to list targets.
 # Add "## description" at end of a target line to show it in help.
 
-.PHONY: help dev build check theme-update post
+.PHONY: help dev build check ci check-double-ext check-bilingual check-pageref check-config theme-update post
 
 # First target is default
 help: ## Show this help (default)
@@ -24,6 +24,21 @@ check: ## Pre-launch: build with path warnings + verify key artifacts
 	test -f public/index.xml
 	test -f public/en/index.xml
 	@echo "OK."
+
+check-double-ext: ## Verify there are no *.md.md files
+	./scripts/check_no_double_md.sh
+
+check-bilingual: ## Verify zh/en content files are paired
+	./scripts/check_bilingual_pairs.sh
+
+check-pageref: ## Verify menu pageRef targets exist in both languages
+	./scripts/check_pageref_targets.sh
+
+check-config: ## Verify core Hugo config values
+	./scripts/check_hugo_config.sh
+
+ci: check check-double-ext check-bilingual check-pageref check-config ## CI checks (strict superset of check)
+	@echo "CI checks passed."
 
 theme-update: ## Update Blowfish theme submodule (--remote --merge)
 	git submodule update --remote --merge

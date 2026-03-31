@@ -1,0 +1,4 @@
+# One relative markdown path per line.
+# Paths are relative to content/en or content/zh.
+# Example:
+# posts/english-only-note.md
