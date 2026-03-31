@@ -1,0 +1,28 @@
+<style>
+  .align-left-center {
+    display: table;
+    margin: 0.5rem auto;
+    text-align: left;
+  }
+
+  .align-left-center ul,
+  .align-left-center ol {
+    list-style-position: inside;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  /*
+   * Keep homepage vertical alignment stable across locales.
+   * Different line wraps in zh/en would otherwise shift centered content.
+   */
+  .home-profile-content {
+    min-height: 12rem;
+  }
+
+  @media (min-width: 768px) {
+    .home-profile-content {
+      min-height: 10rem;
+    }
+  }
+</style>
