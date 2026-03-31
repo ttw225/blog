@@ -1,0 +1,51 @@
+# Personal Blog (Hugo + Blowfish)
+
+This repo builds a bilingual personal blog with Hugo (extended) using the Blowfish theme.
+
+## Quick start
+
+Prerequisites:
+- `hugo` (extended)
+- `git` (for theme submodule)
+
+1. Init/update the theme submodule:
+   - `git submodule update --init --recursive`
+2. Run locally:
+   - `make dev`
+3. Build the static site:
+   - `make build`
+4. Run pre-launch checks:
+   - `make ci`
+
+## Folder structure (content)
+
+- English posts: `content/en/posts/`
+- Traditional Chinese posts: `content/zh/posts/`
+- Posts are expected to be created as bilingual pairs by the `make post <slug>` workflow.
+
+If you add new posts, keep the English and Chinese counterparts in sync (the repo includes scripts to verify pairing).
+
+## Useful commands
+
+- `make help` - list Makefile targets
+- `make dev` - Hugo dev server
+- `make build` - build to `public/`
+- `make ci` - verify site artifacts + content checks
+- `make post <slug>` - create a new post in both `en/` and `zh/`
+- `make theme-update` - update the Blowfish submodule
+
+## License
+
+This project uses a split-license approach:
+
+- Code, configuration, and automation files: `MIT` (see `LICENSE`)
+- Blog content (posts and other content under `content/`, plus site assets under `assets/`): `CC BY 4.0` (see `LICENSE-CONTENT`)
+
+Important for reuse:
+- If you reuse blog content (text excerpts, images, screenshots), you must provide attribution and link back to the original post.
+- Example attribution line (adapt as needed):
+  - `Source: Peter Wang, "<post title>", <post URL>`
+
+Third-party note:
+- The Blowfish theme is licensed separately under `themes/blowfish/LICENSE`.
+
