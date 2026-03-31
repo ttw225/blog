@@ -19,7 +19,7 @@
 [[main]]
  name = "碩士論文"
  parent = "研究"
- pageRef = "thesis"
+ pageRef = "research/thesis"
  weight = 20
 
 [[main]]
@@ -40,8 +40,8 @@
  weight = 20
 
 [[main]]
-  name = "學習"
-  pageRef = "learn"
+  name = "概念"
+  pageRef = "concepts"
   weight = 30
 
 [[main]]

@@ -19,7 +19,7 @@
 [[main]]
  name = "Thesis"
  parent = "Research"
- pageRef = "thesis"
+ pageRef = "research/thesis"
  weight = 20
 
 [[main]]
@@ -40,8 +40,8 @@
  weight = 20
 
 [[main]]
-  name = "Learn"
-  pageRef = "learn"
+  name = "Concepts"
+  pageRef = "concepts"
   weight = 30
 
 [[main]]
