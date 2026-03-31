@@ -1,0 +1,10 @@
+{{- $lang := lower .Site.Language.Lang -}}
+{{- $isZh := or (eq $lang "zh") (hasPrefix $lang "zh-") -}}
+<div class="coming-soon not-prose rounded-lg border border-neutral-300/70 dark:border-neutral-700/70 px-4 py-3 text-sm text-neutral-700 dark:text-neutral-300">
+  {{- if $isZh -}}
+    這個區塊的內容還在整理中，之後會在這裡補上更完整的介紹。
+  {{- else -}}
+    Content for this section is still in progress. More details will be published here soon.
+  {{- end -}}
+</div>
+
