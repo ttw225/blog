@@ -37,8 +37,24 @@ check-pageref: ## Verify menu pageRef targets exist in both languages
 check-config: ## Verify core Hugo config values
 	./scripts/check_hugo_config.sh
 
-ci: check check-double-ext check-bilingual check-pageref check-config ## CI checks (strict superset of check)
-	@echo "CI checks passed."
+ci: ## CI checks (strict superset of check)
+	@set -e; \
+	print_divider() { printf '%s\n' '------------------------------------------------------------'; }; \
+	run_step() { \
+		idx="$$1"; title="$$2"; target="$$3"; \
+		print_divider; \
+		printf '[CI %s/5] %s\n' "$$idx" "$$title"; \
+		print_divider; \
+		$(MAKE) --no-print-directory "$$target"; \
+		printf '[CI %s/5] DONE: %s\n\n' "$$idx" "$$title"; \
+	}; \
+	printf '\n%s\n' '==================== CI PIPELINE START ===================='; \
+	run_step 1 'Hugo build and key artifacts' check; \
+	run_step 2 'File extension sanity (*.md.md)' check-double-ext; \
+	run_step 3 'Bilingual pairing' check-bilingual; \
+	run_step 4 'Menu pageRef targets' check-pageref; \
+	run_step 5 'Hugo config assertions' check-config; \
+	printf '%s\n' '==================== CI PIPELINE PASS ====================='
 
 theme-update: ## Update Blowfish theme submodule (--remote --merge)
 	git submodule update --remote --merge
