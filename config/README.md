@@ -13,4 +13,4 @@ Optional layers (not present yet): `config/development/`, `config/production/` f
 
 Content lives in `content/en/` and `content/zh/`; language-specific mounts may also come from the theme module.
 
-Before deploying, run `make check` and follow [docs/PRELAUNCH.md](../docs/PRELAUNCH.md).
+Before deploying, run `make check` from the repo root (see the `check` target in the root `Makefile` for what it verifies).

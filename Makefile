@@ -23,7 +23,7 @@ check: ## Pre-launch: build with path warnings + verify key artifacts
 	test -f public/sitemap.xml
 	test -f public/index.xml
 	test -f public/en/index.xml
-	@echo "OK. Manual steps: see docs/PRELAUNCH.md"
+	@echo "OK."
 
 theme-update: ## Update Blowfish theme submodule (--remote --merge)
 	git submodule update --remote --merge
