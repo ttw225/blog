@@ -13,5 +13,5 @@ Hi，我是 Peter。
 - 熱愛 DevOps 自動化的工程師
 - [PyCon Taiwan](https://tw.pycon.org/) 議程 & 公關 志工
 - 重視資安的開發者
-- 養貓
+- 養了一隻貓，叫黑糖
 {{% /alignleft %}}
