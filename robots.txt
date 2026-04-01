@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ttw225.github.io/blog/sitemap.xml
