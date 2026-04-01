@@ -17,7 +17,32 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create GitHub release from tag
+      # Local bump flow: tag points at commits; cz changelog <semver> rebuilds that version's notes from git.
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Install Commitizen
+        run: pip install "commitizen>=4.0.0,<5"
+
+      - name: Build release body from Commitizen
+        id: cz_body
+        continue-on-error: true
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          cz changelog "$VERSION" --dry-run > release_body.md
+          test -s release_body.md
+
+      - name: Create GitHub release (Commitizen body)
+        if: steps.cz_body.outcome == 'success'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          body_path: release_body.md
+
+      - name: Create GitHub release (GitHub-generated fallback)
+        if: steps.cz_body.outcome != 'success'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
