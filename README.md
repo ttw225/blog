@@ -4,7 +4,7 @@ This repo builds a bilingual personal blog with Hugo (extended) using the Blowfi
 
 ## Statistics
 
-[![pages-build-deployment](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment)
+[![pages-build-deployment](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment)
 
 ## Quick start
 
