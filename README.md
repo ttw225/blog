@@ -2,6 +2,10 @@
 
 This repo builds a bilingual personal blog with Hugo (extended) using the Blowfish theme.
 
+## Statistics
+
+[![pages-build-deployment](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment)
+
 ## Quick start
 
 Prerequisites:
