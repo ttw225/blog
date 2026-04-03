@@ -34,5 +34,7 @@ assert_match '^\[permalinks\]' "$MAIN_CONFIG" \
   "hugo.toml must define [permalinks] for stable /posts/:slug/ URLs."
 assert_match '^\s*posts\s*=\s*"/posts/:slug/"' "$MAIN_CONFIG" \
   "hugo.toml permalinks.posts must be /posts/:slug/."
+assert_match '^\s*"open-source"\s*=\s*"/open-source/:slug/"' "$MAIN_CONFIG" \
+  "hugo.toml permalinks for open-source must be /open-source/:slug/."
 
 echo "Core Hugo config assertions passed."
