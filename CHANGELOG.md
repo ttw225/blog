@@ -1,3 +1,12 @@
+## v0.0.2 (2026-04-03)
+
+### Chore
+
+- **site**: update post-structure. Merge pull request #1
+- **site**: use post/YYYY/MM/<slug>.md and img/<slug>/*.img
+Merge pull request #1 from ttw225/chore/post-structure
+- **site**: use post/YYYY/MM/<slug>.md and img/<slug>/*.img
+
 ## v0.0.1 (2026-04-01)
 
 ### Docs
