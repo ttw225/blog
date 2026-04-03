@@ -1,0 +1,69 @@
+{{/*
+  Resolve assets/img/<slug>/<filename> for bilingual posts (slug from front matter or file base name).
+  Usage: {{< postimg "screenshot.png" >}}
+         {{< postimg src="a.png" alt="..." caption="..." >}}
+  Mirrors Blowfish figure shortcode behaviour for local assets.
+*/}}
+{{- $fname := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $fname = .Get "src" -}}
+{{- else -}}
+  {{- $fname = .Get 0 -}}
+{{- end -}}
+{{- if not $fname -}}
+  {{- errorf "postimg: pass a filename, e.g. {{< postimg \"shot.png\" >}} (page %q)" .Page.File.Path -}}
+{{- end -}}
+{{- $slug := .Page.Params.slug | default .Page.File.ContentBaseName -}}
+{{- $absPath := printf "img/%s/%s" $slug $fname -}}
+{{- $alt := .Get "alt" | default $fname -}}
+{{- $caption := .Get "caption" -}}
+{{- $href := .Get "href" -}}
+{{- $class := .Get "class" -}}
+{{- $figureClass := .Get "figureClass" -}}
+{{- $target := .Get "target" | default "_blank" -}}
+{{- $nozoom := .Get "nozoom" | default false -}}
+{{- $disableImageOptimization := .Site.Params.disableImageOptimization | default false -}}
+{{- $url := urls.Parse $absPath -}}
+
+<figure{{ with $figureClass }} class="{{ . }}"{{ end }}>
+{{- with $href }}<a href="{{ . }}" {{ with $target }}target="{{ . }}"{{ end }} class="inline-block">{{ end -}}
+{{- if findRE "^https?" $url.Scheme }}
+  <img class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}" src="{{ $url.String }}" alt="{{ $alt }}" />
+{{- else }}
+  {{- $resource := "" }}
+  {{- if $.Page.Resources.GetMatch $absPath }}
+    {{- $resource = $.Page.Resources.GetMatch $absPath }}
+  {{- else if resources.Get $absPath }}
+    {{- $resource = resources.Get $absPath }}
+  {{- end }}
+  {{- with $resource }}
+    {{- if or $disableImageOptimization (eq .MediaType.SubType "svg") }}
+      <img
+        class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}"
+        src="{{ .RelPermalink }}"
+        alt="{{ $alt }}"
+      />
+    {{- else }}
+      <img
+        class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="auto"
+        alt="{{ $alt }}"
+        {{ with .Width }}width="{{ . }}"{{ end }}
+        {{ with .Height }}height="{{ . }}"{{ end }}
+        src="{{ (.Resize "800x").RelPermalink }}"
+        srcset="
+        {{- (.Resize "800x").RelPermalink }} 800w,
+        {{- (.Resize "1280x").RelPermalink }} 1280w"
+        sizes="(min-width: 768px) 50vw, 65vw"
+        data-zoom-src="{{ .RelPermalink }}"
+      />
+    {{- end }}
+  {{- else }}
+    <img class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}" src="{{ $absPath }}" alt="{{ $alt }}" />
+  {{- end }}
+{{- end }}
+{{ if $href }}</a>{{ end }}
+{{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>

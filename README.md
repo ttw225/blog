@@ -19,11 +19,13 @@ Prerequisites:
 
 ## Folder structure (content)
 
-- English posts: `content/en/posts/`
-- Traditional Chinese posts: `content/zh/posts/`
+- English posts: `content/en/posts/YYYY/MM/<slug>.md`
+- Traditional Chinese posts: `content/zh/posts/YYYY/MM/<slug>.md`
+- Published URLs use `/posts/<slug>/` (see `[permalinks]` in `config/_default/hugo.toml`); nested folders are for organization only.
+- Shared images live under `assets/img/<slug>/` (created by `make post`).
 - Posts are expected to be created as bilingual pairs by the `make post <slug>` workflow.
 
-If you add new posts, keep the English and Chinese counterparts in sync (the repo includes scripts to verify pairing).
+If you add new posts, keep the English and Chinese counterparts in sync (the repo includes scripts to verify pairing). Set an explicit `slug` in front matter when titles differ between languages so both locales share the same URL slug.
 
 ## Useful commands
 
@@ -31,7 +33,8 @@ If you add new posts, keep the English and Chinese counterparts in sync (the rep
 - `make dev` - Hugo dev server
 - `make build` - build to `public/`
 - `make ci` - verify site artifacts + content checks
-- `make post <slug>` - create a new post in both `en/` and `zh/`
+- `make post <slug>` - create paired posts under `posts/YYYY/MM/`, `assets/img/<slug>/`, and prefilled `featureimage` (optional: `POST_DATE=2026/05` to override the month folder)
+- Inline images by filename: `{{< postimg "screenshot.png" >}}` resolves to `assets/img/<slug>/screenshot.png` (see `layouts/shortcodes/postimg.html`)
 - `make theme-update` - update the Blowfish submodule
 
 ## License

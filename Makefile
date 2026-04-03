@@ -59,22 +59,23 @@ ci: ## CI checks (strict superset of check)
 theme-update: ## Update Blowfish theme submodule (--remote --merge)
 	git submodule update --remote --merge
 
-post: ## Create new blog post in en/ and zh/ via hugo new
-	@name=$(filter-out $@,$(MAKECMDGOALS)); \
-	if [ -z "$$name" ]; then \
+post: ## Create en/zh posts under posts/YYYY/MM and assets/img/<slug>/ (usage: make post <slug>)
+	@slug=$(filter-out $@,$(MAKECMDGOALS)); \
+	if [ -z "$$slug" ]; then \
 		echo "Usage: make post <slug>"; \
 		exit 1; \
 	fi; \
-	hugo new content/en/posts/$$name.md; \
-	if [ ! -f content/en/posts/$$name.md ]; then \
-		echo "Expected file content/en/posts/$$name.md not found; adjust Makefile if your contentDir is different."; \
+	ym=$${POST_DATE:-$$(date +%Y/%m)}; \
+	en="content/en/posts/$$ym/$$slug.md"; \
+	zh="content/zh/posts/$$ym/$$slug.md"; \
+	if [ -f "$$en" ] || [ -f "$$zh" ]; then \
+		echo "Refusing to overwrite existing: $$en or $$zh"; \
 		exit 1; \
 	fi; \
-	hugo new content/zh/posts/$$name.md; \
-	if [ ! -f content/zh/posts/$$name.md ]; then \
-		echo "Expected file content/zh/posts/$$name.md not found; adjust Makefile if your contentDir is different."; \
-		exit 1; \
-	fi
+	mkdir -p "content/en/posts/$$ym" "content/zh/posts/$$ym" "assets/img/$$slug"; \
+	hugo new --kind posts "$$en"; \
+	hugo new --kind posts "$$zh"; \
+	echo "Created $$en , $$zh and assets/img/$$slug/"
 
 %::
 	@:
