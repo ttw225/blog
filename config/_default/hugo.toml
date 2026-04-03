@@ -76,4 +76,4 @@ enableGitInfo = true
       weight = 10
 
 [versions]
-  [versions."v0.0.2"]
+  [versions."v0.0.3"]

@@ -1,3 +1,9 @@
+## v0.0.3 (2026-04-03)
+
+### Chore
+
+- **site**: update open source structure and CI auto bump (#2)
+
 ## v0.0.2 (2026-04-03)
 
 ### Chore
