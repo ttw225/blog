@@ -30,5 +30,9 @@ assert_match '^contentDir\s*=\s*"content/en"' "$LANG_EN" \
   "languages.en.toml contentDir must be content/en."
 assert_match '^contentDir\s*=\s*"content/zh"' "$LANG_ZH" \
   "languages.zh.toml contentDir must be content/zh."
+assert_match '^\[permalinks\]' "$MAIN_CONFIG" \
+  "hugo.toml must define [permalinks] for stable /posts/:slug/ URLs."
+assert_match '^\s*posts\s*=\s*"/posts/:slug/"' "$MAIN_CONFIG" \
+  "hugo.toml permalinks.posts must be /posts/:slug/."
 
 echo "Core Hugo config assertions passed."

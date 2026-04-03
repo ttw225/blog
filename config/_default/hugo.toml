@@ -26,6 +26,10 @@ enableGitInfo = true
 [imaging]
   anchor = 'Center'
 
+# Strip nested content paths (e.g. posts/2026/04/) from public URLs; section stays /posts/<slug>/
+[permalinks]
+  posts = "/posts/:slug/"
+
 [taxonomies]
   tag = "tags"
   category = "categories"
