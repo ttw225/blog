@@ -21,11 +21,12 @@ Prerequisites:
 
 - English posts: `content/en/posts/YYYY/MM/<slug>.md`
 - Traditional Chinese posts: `content/zh/posts/YYYY/MM/<slug>.md`
-- Published URLs use `/posts/<slug>/` (see `[permalinks]` in `config/_default/hugo.toml`); nested folders are for organization only.
-- Shared images live under `assets/img/<slug>/` (created by `make post`).
-- Posts are expected to be created as bilingual pairs by the `make post <slug>` workflow.
+- Open Source (same layout): `content/{en,zh}/open-source/YYYY/MM/<slug>.md`
+- Published URLs: `/posts/<slug>/` and `/open-source/<slug>/` (see `[permalinks]` in `config/_default/hugo.toml`); nested `YYYY/MM` folders are for organization only.
+- Shared images live under `assets/img/<slug>/` (created by `make post` or `make open-source`).
+- Posts and open-source pages are expected to be created as bilingual pairs via `make post <slug>` or `make open-source <slug>`.
 
-If you add new posts, keep the English and Chinese counterparts in sync (the repo includes scripts to verify pairing). Set an explicit `slug` in front matter when titles differ between languages so both locales share the same URL slug.
+If you add new posts or pages, keep the English and Chinese counterparts in sync (the repo includes scripts to verify pairing). Set an explicit `slug` in front matter when titles differ between languages so both locales share the same URL slug.
 
 ## Useful commands
 
@@ -34,6 +35,7 @@ If you add new posts, keep the English and Chinese counterparts in sync (the rep
 - `make build` - build to `public/`
 - `make ci` - verify site artifacts + content checks
 - `make post <slug>` - create paired posts under `posts/YYYY/MM/`, `assets/img/<slug>/`, and prefilled `featureimage` (optional: `POST_DATE=2026/05` to override the month folder)
+- `make open-source <slug>` - same for `open-source/` section (`/open-source/<slug>/` URLs)
 - Inline images by filename: `{{< postimg "screenshot.png" >}}` resolves to `assets/img/<slug>/screenshot.png` (see `layouts/shortcodes/postimg.html`)
 - `make theme-update` - update the Blowfish submodule
 
