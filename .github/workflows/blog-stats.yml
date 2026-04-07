@@ -21,12 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
+          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           fetch-depth: 0
 
       - name: Generate stats
         run: make stats
 
-      - name: Commit stats changes
+      - name: Commit and push stats updates
         env:
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
@@ -39,4 +40,4 @@ jobs:
           fi
           git add README.md docs/stats-latest.json docs/stats-endpoint.json docs/stats-endpoint-pairs.json docs/stats-endpoint-chars.json docs/stats-history.jsonl
           git commit -m "auto: refresh blog stats"
-          git push
+          git push origin HEAD:main
