@@ -17,7 +17,7 @@ Counting rule: content chars are non-whitespace characters after front matter re
 | Metric | EN | ZH | Total |
 | --- | ---: | ---: | ---: |
 | Posts | 2 | 2 | 4 |
-| Content chars (no whitespace) | 4246 | 3314 | 7560 |
+| Content chars (no whitespace) | 4809 | 3697 | 8506 |
 | Paired posts | - | - | 2 |
 
 Trend (all snapshots):
@@ -26,9 +26,9 @@ Trend (all snapshots):
 xychart-beta
   title "Post Pairs and Total Content Chars (Last 10 snapshots)"
   x-axis ["03-27", "04-07"]
-  y-axis "Count" 0 --> 7660
+  y-axis "Count" 0 --> 8606
   bar [0, 2]
-  line [0, 7560]
+  line [0, 8506]
 ```
 <!-- stats:auto:end -->
 
