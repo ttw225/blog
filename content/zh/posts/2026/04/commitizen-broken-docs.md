@@ -2,13 +2,18 @@
 title: "Commitizen 程式碼區塊跑版"
 slug: "commitizen-broken-docs"
 date: 2026-04-03T17:27:37+08:00
-description: "官網文件站 fenced code 解析異常：Pygments 2.20.0 的 HtmlFormatter 在 filename=None 時出錯，導致 pymdown 高亮鏈失敗；上游 issue/PR 與暫時解法（pin pygments<2.20）。"
+description: "官網文件站 fenced code 解析異常：Pygments 2.20.0 的 HtmlFormatter 在 filename=None 時出錯，導致 pymdown 高亮鏈失敗；上游 issue/PR 與兩種避險路徑（pin Pygments 或升級 pymdown-extensions）。"
 tags: ["commitizen", "mkdocs", "pygments", "pymdown", "github-pages"]
 categories: ["open-source"]
 featureimage: "img/commitizen-broken-docs/cover.jpeg"
 ---
 
 {{< postimg "broken-docs.jpeg" >}}
+
+> [!NOTE]
+> **最新進展：已避開此問題**
+> Commitizen 在合併 PR [commitizen-tools/commitizen#1924](https://github.com/commitizen-tools/commitizen/pull/1924) 後，文件站已恢復正常顯示。
+> 這次解法的重點是升級文件工具鏈 `pymdown-extensions`。
 
 ## 發生了什麼事
 
@@ -53,7 +58,13 @@ Pygments 已追蹤並合併修正，預計在 **2.20.1** 發佈。
 - Issue（closed）：[pygments/pygments#3076](https://github.com/pygments/pygments/issues/3076)
 - Fix（merged）：[pygments/pygments#3078](https://github.com/pygments/pygments/pull/3078)（Handle `None` before HTML escaping）
 
-### 使用到 Pygments 的專案（修復前）
+### 使用 MkDocs PyMdown 套件的專案
+
+`pymdown-extensions 10.21.2` 修正了與新版 Pygments、`filename=None` 相關的高亮問題。
+
+參考資訊： [changelog](https://github.com/facelessuser/pymdown-extensions/releases/tag/10.21.2)
+
+### 其他使用到 Pygments 的專案（修復前）
 
 若專案（例如文件建置流程）有依賴到 Pygments，在升級到「含修復版本」之前，實務上可先做暫時避險：**把 Pygments 鎖在 2.20 以下**，例如：
 
@@ -62,9 +73,14 @@ Pygments 已追蹤並合併修正，預計在 **2.20.1** 發佈。
 
 類似做法可參考：[jj-vcs/jj#9233](https://github.com/jj-vcs/jj/pull/9233)。等上游修復版本發佈並升級後，再鬆綁 pin，並以 `mkdocs build` 確認 fenced code 渲染正常。
 
-### 最新進展
+### Commitizen PR #1924 是怎麼避開的
 
-Commitizen 官方文件已修復此問題，可參考合併的 PR：[commitizen-tools/commitizen#1924](https://github.com/commitizen-tools/commitizen/pull/1924)。
+透過升級文件相依套件來避開觸發條件，關鍵包括：
+
+- `pymdown-extensions`：`10.19.1 -> 10.21.2`
+- `mkdocs-material`：`9.7.1 -> 9.7.6`
+- `pygments` 在 lockfile 仍是 `2.20.0`
+
 
 ### 附錄：Pygments 最小重現
 
