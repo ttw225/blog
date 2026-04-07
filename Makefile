@@ -1,7 +1,7 @@
 # Project task entrypoint. Run `make` or `make help` to list targets.
 # Add "## description" at end of a target line to show it in help.
 
-.PHONY: help dev build check ci check-double-ext check-bilingual check-pageref check-config theme-update post open-source
+.PHONY: help dev build check ci check-double-ext check-bilingual check-pageref check-config stats theme-update post open-source
 
 # First target is default
 help: ## Show this help (default)
@@ -36,6 +36,9 @@ check-pageref: ## Verify menu pageRef targets exist in both languages
 
 check-config: ## Verify core Hugo config values
 	./scripts/check_hugo_config.sh
+
+stats: ## Generate README/blog stats artifacts
+	python3 scripts/generate_blog_stats.py
 
 ci: ## CI checks (strict superset of check)
 	@set -e; \

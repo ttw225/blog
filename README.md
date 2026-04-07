@@ -2,6 +2,36 @@
 
 This repo builds a bilingual personal blog with Hugo (extended) using the Blowfish theme.
 
+<!-- stats:auto:start -->
+## Statistics
+
+[![latest-release](https://img.shields.io/github/v/release/ttw225/blog?display_name=tag)](https://github.com/ttw225/blog/releases/latest)
+[![pages-build-deployment](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment)
+
+![post-pairs](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-pairs.json)
+![total-content-chars](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-chars.json)
+
+Last updated: `2026-03-27`
+Counting rule: content chars are non-whitespace characters after front matter removal.
+
+| Metric | EN | ZH | Total |
+| --- | ---: | ---: | ---: |
+| Posts | 0 | 0 | 0 |
+| Content chars (no whitespace) | 0 | 0 | 0 |
+| Paired posts | - | - | 0 |
+
+Trend (all snapshots):
+
+```mermaid
+xychart-beta
+  title "Post Pairs and Total Content Chars (All snapshots)"
+  x-axis ["03-27"]
+  y-axis "Count" 0 --> 10
+  bar [0]
+  line [0]
+```
+<!-- stats:auto:end -->
+
 ## Quick start
 
 Prerequisites:
