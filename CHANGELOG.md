@@ -1,3 +1,9 @@
+## v0.2.0 (2026-04-07)
+
+### Feat
+
+- **site**: add blog statistics workflow and README stats badges (#5)
+
 ## v0.1.0 (2026-04-07)
 
 ### Feat
