@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pygments on Peter Wang</title><link>https://ttw225.github.io/blog/en/tags/pygments/</link><description>Recent content in Pygments on Peter Wang</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>peter86225+web@gmail.com (Peter Wang)</managingEditor><webMaster>peter86225+web@gmail.com (Peter Wang)</webMaster><copyright>© 2026 Peter. All rights reserved.</copyright><lastBuildDate>Tue, 07 Apr 2026 15:33:51 +0800</lastBuildDate><atom:link href="https://ttw225.github.io/blog/en/tags/pygments/index.xml" rel="self" type="application/rss+xml"/><item><title>Commitizen broken docs: fenced code and Pygments 2.20.0</title><link>https://ttw225.github.io/blog/en/posts/commitizen-broken-docs/</link><pubDate>Fri, 03 Apr 2026 17:27:37 +0800</pubDate><author>peter86225+web@gmail.com (Peter Wang)</author><guid>https://ttw225.github.io/blog/en/posts/commitizen-broken-docs/</guid><description>&lt;figure&gt;
+ &lt;img
+ class="my-0 rounded-md"
+ loading="lazy"
+ decoding="async"
+ fetchpriority="auto"
+ alt="broken-docs.jpeg"
+ width="1346"
+ height="1122"
+ src="https://ttw225.github.io/blog/img/commitizen-broken-docs/broken-docs_hu_638be1fc007d46bc.jpeg"
+ srcset="https://ttw225.github.io/blog/img/commitizen-broken-docs/broken-docs_hu_638be1fc007d46bc.jpeg 800w,/blog/img/commitizen-broken-docs/broken-docs_hu_cdc10b523d005eb.jpeg 1280w"
+ sizes="(min-width: 768px) 50vw, 65vw"
+ data-zoom-src="https://ttw225.github.io/blog/img/commitizen-broken-docs/broken-docs.jpeg"
+ /&gt;
+
+
+&lt;/figure&gt;
+
+
+&lt;h2 class="relative group"&gt;What happened
+ &lt;div id="what-happened" class="anchor"&gt;&lt;/div&gt;
+ 
+ &lt;span
+ class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+ &lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-happened" aria-label="Anchor"&gt;#&lt;/a&gt;
+ &lt;/span&gt;
+ 
+&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="https://commitizen-tools.github.io/commitizen/" target="_blank" rel="noreferrer"&gt;Commitizen documentation&lt;/a&gt; (MkDocs + Material on GitHub Pages) shows &lt;strong&gt;fenced code blocks that fail to render correctly&lt;/strong&gt;: &lt;code&gt;```bash&lt;/code&gt; appears as plain text inside a paragraph, and lines starting with &lt;code&gt;#&lt;/code&gt; in code are even interpreted as &lt;strong&gt;Markdown headings&lt;/strong&gt; (&lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;).&lt;/p&gt;</description></item></channel></rss>
