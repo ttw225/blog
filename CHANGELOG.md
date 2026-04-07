@@ -1,3 +1,25 @@
+## v0.1.0 (2026-04-07)
+
+### Feat
+
+- **open-source**: add commitizen-broken-docs
+- **open-source**: add root page of open-source
+
+### Docs
+
+- **open-source**: update list page of open-source
+- **open-source**: rename screenshot
+- **open-source**: add commitizen broken docs image
+
+### CI
+
+- **tooling**: add CI write permissions (#3)
+
+### Chore
+
+- **site**: move open-source to posts
+- **site**: enable TOC on article and list page
+
 ## v0.0.3 (2026-04-03)
 
 ### Chore
