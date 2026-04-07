@@ -77,23 +77,23 @@ post: ## Create en/zh posts under posts/YYYY/MM and assets/img/<slug>/ (usage: m
 	hugo new --kind posts "$$zh"; \
 	echo "Created $$en , $$zh and assets/img/$$slug/"
 
-open-source: ## Create en/zh open-source pages under open-source/YYYY/MM and assets/img/<slug> (usage: make open-source <slug>)
+open-source: ## Create en/zh open-source posts with prefilled category (usage: make open-source <slug>)
 	@slug=$(filter-out $@,$(MAKECMDGOALS)); \
 	if [ -z "$$slug" ]; then \
 		echo "Usage: make open-source <slug>"; \
 		exit 1; \
 	fi; \
 	ym=$${POST_DATE:-$$(date +%Y/%m)}; \
-	en="content/en/open-source/$$ym/$$slug.md"; \
-	zh="content/zh/open-source/$$ym/$$slug.md"; \
+	en="content/en/posts/$$ym/$$slug.md"; \
+	zh="content/zh/posts/$$ym/$$slug.md"; \
 	if [ -f "$$en" ] || [ -f "$$zh" ]; then \
 		echo "Refusing to overwrite existing: $$en or $$zh"; \
 		exit 1; \
 	fi; \
-	mkdir -p "content/en/open-source/$$ym" "content/zh/open-source/$$ym" "assets/img/$$slug"; \
+	mkdir -p "content/en/posts/$$ym" "content/zh/posts/$$ym" "assets/img/$$slug"; \
 	hugo new --kind open-source "$$en"; \
 	hugo new --kind open-source "$$zh"; \
-	echo "Created $$en , $$zh and assets/img/$$slug/"
+	echo "Created $$en , $$zh and assets/img/$$slug/ (categories: [\"open-source\"])"
 
 %::
 	@:

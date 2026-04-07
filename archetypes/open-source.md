@@ -5,7 +5,7 @@ date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 draft: true
 description: ""
 tags: []
-categories: []
+categories: ["open-source"]
 featureimage: "img/{{ .File.ContentBaseName }}/cover.jpg"
 ---
 
