@@ -20,19 +20,16 @@ Counting rule: content chars are non-whitespace characters after front matter re
 | Content chars (no whitespace) | 0 | 0 | 0 |
 | Paired posts | - | - | 0 |
 
-<details>
-<summary>Trend (last 10 snapshots)</summary>
+Trend (all snapshots):
 
 ```mermaid
 xychart-beta
-  title "Post Pairs and Total Content Chars (Last 10 snapshots)"
+  title "Post Pairs and Total Content Chars (All snapshots)"
   x-axis ["03-27"]
   y-axis "Count" 0 --> 10
   bar [0]
   line [0]
 ```
-
-</details>
 <!-- stats:auto:end -->
 
 ## Quick start

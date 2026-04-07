@@ -102,10 +102,9 @@ def endpoint_url(path: Path) -> str:
 
 
 def mermaid_xychart(history: list[dict[str, Any]]) -> str:
-    recent = history[-10:]
-    dates = [f'"{row["date"][5:]}"' for row in recent]
-    pairs = [str(int(row["pairs"])) for row in recent]
-    total_chars_values = [int(row["en_chars"]) + int(row["zh_chars"]) for row in recent]
+    dates = [f'"{row["date"][5:]}"' for row in history]
+    pairs = [str(int(row["pairs"])) for row in history]
+    total_chars_values = [int(row["en_chars"]) + int(row["zh_chars"]) for row in history]
     total_chars = [str(v) for v in total_chars_values]
     y_max = max([10, *total_chars_values]) + 100
     return "\n".join(
@@ -146,12 +145,9 @@ def render_stats_section(latest: dict[str, Any], history: list[dict[str, Any]]) 
         f"| Content chars (no whitespace) | {latest['en_chars']} | {latest['zh_chars']} | {latest['en_chars'] + latest['zh_chars']} |",
         f"| Paired posts | - | - | {latest['pairs']} |",
         "",
-        "<details>",
-        "<summary>Trend (last 10 snapshots)</summary>",
+        "Trend (all snapshots):",
         "",
         mermaid_xychart(history),
-        "",
-        "</details>",
     ]
     return "\n".join(lines)
 
