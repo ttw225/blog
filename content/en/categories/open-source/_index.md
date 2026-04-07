@@ -1,6 +1,10 @@
 ---
-title: "Open Source Contributions"
+title: "Open Source"
+linkTitle: "Open Source"
 description: "Open source projects and a record of contributions."
+url: /en/open-source/
+aliases:
+  - /categories/open-source/
 cascade:
   showReadingTime: false
   showWordCount: false

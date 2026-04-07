@@ -51,7 +51,7 @@
 
 [[main]]
   name = "Open Source"
-  pageRef = "open-source"
+  pageRef = "categories/open-source"
   weight = 40
 
 [[main]]

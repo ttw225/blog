@@ -1,6 +1,11 @@
 ---
-title: "開源貢獻"
+title: "開源"
+linkTitle: "開源"
 description: "開源專案與貢獻紀錄。"
+url: /open-source/
+aliases:
+  - /tags/open-source/
+  - /categories/open-source/
 cascade:
   showReadingTime: false
   showWordCount: false
