@@ -2,13 +2,18 @@
 title: "Commitizen broken docs: fenced code and Pygments 2.20.0"
 slug: "commitizen-broken-docs"
 date: 2026-04-03T17:27:37+08:00
-description: "Why the Commitizen docs site broke: Pygments 2.20.0 HtmlFormatter with filename=None, the MkDocs/pymdown highlight chain, upstream issue/PR, and pinning pygments<2.20 until a fixed release."
+description: "Why the Commitizen docs site broke: Pygments 2.20.0 HtmlFormatter with filename=None, the MkDocs/pymdown highlight chain, upstream issue/PR, and two mitigation paths (pinning Pygments or upgrading pymdown-extensions)."
 tags: ["commitizen", "mkdocs", "pygments", "pymdown", "github-pages"]
 categories: ["open-source"]
 featureimage: "img/commitizen-broken-docs/cover.jpeg"
 ---
 
 {{< postimg "broken-docs.jpeg" >}}
+
+> [!NOTE]
+> **Update: issue avoided in production**
+> After PR [commitizen-tools/commitizen#1924](https://github.com/commitizen-tools/commitizen/pull/1924) was merged, the Commitizen docs render normally again.
+> The key mitigation was upgrading the docs toolchain  `pymdown-extensions`.
 
 ## What happened
 
@@ -53,7 +58,13 @@ The regression is tracked and fixed upstream; the fix is slated for **2.20.1**.
 - Issue (closed): [pygments/pygments#3076](https://github.com/pygments/pygments/issues/3076)
 - Fix (merged): [pygments/pygments#3078](https://github.com/pygments/pygments/pull/3078) (handle `None` before HTML escaping)
 
-### Projects depending on Pygments (before fixed release)
+### Projects using MkDocs PyMdown extensions
+
+`pymdown-extensions 10.21.2` fixes a highlight compatibility issue related to recent Pygments versions and `filename=None`.
+
+Reference: [changelog](https://github.com/facelessuser/pymdown-extensions/releases/tag/10.21.2)
+
+### Other projects depending on Pygments (before fixed release)
 
 If your project (for example, a docs build pipeline) depends on Pygments, apply a temporary mitigation until you can upgrade to a fixed release: **pin Pygments below 2.20**, for example:
 
@@ -62,9 +73,13 @@ If your project (for example, a docs build pipeline) depends on Pygments, apply 
 
 A similar mitigation appears in [jj-vcs/jj#9233](https://github.com/jj-vcs/jj/pull/9233). Once the upstream fixed release is available and you upgrade, loosen the pin and re-run `mkdocs build` to confirm fenced code renders correctly.
 
-### Update
+### How Commitizen PR #1924 avoided it
 
-The Commitizen docs have now been fixed. See the merged PR: [commitizen-tools/commitizen#1924](https://github.com/commitizen-tools/commitizen/pull/1924).
+They avoided the trigger by upgrading docs dependencies. The key changes were:
+
+- `pymdown-extensions`: `10.19.1 -> 10.21.2`
+- `mkdocs-material`: `9.7.1 -> 9.7.6`
+- `pygments` remained `2.20.0` in lockfile
 
 ### Appendix: minimal Pygments repro
 

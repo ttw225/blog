@@ -8,8 +8,8 @@ This repo builds a bilingual personal blog with Hugo (extended) using the Blowfi
 [![latest-release](https://img.shields.io/github/v/release/ttw225/blog?display_name=tag)](https://github.com/ttw225/blog/releases/latest)
 [![pages-build-deployment](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/ttw225/blog/actions/workflows/pages/pages-build-deployment)
 
-![post-pairs](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-pairs.json)
-![total-content-chars](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-chars.json)
+![post-pairs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-pairs.json&query=%24.message&label=post-pairs&color=blue)
+![total-content-chars](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-chars.json&query=%24.message&label=total-content-chars&color=6f42c1)
 
 Last updated: `2026-04-07`
 Counting rule: content chars are non-whitespace characters after front matter removal.

@@ -95,10 +95,15 @@ def write_json(path: Path, data: dict[str, Any]) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def endpoint_url(path: Path) -> str:
+def dynamic_badge_url(path: Path, *, label: str, color: str) -> str:
     rel = path.relative_to(REPO_ROOT).as_posix()
-    encoded = quote(f"https://raw.githubusercontent.com/ttw225/blog/main/{rel}", safe="")
-    return f"https://img.shields.io/endpoint?url={encoded}"
+    raw_url = quote(f"https://raw.githubusercontent.com/ttw225/blog/main/{rel}", safe="")
+    encoded_label = quote(label, safe="")
+    encoded_color = quote(color, safe="")
+    return (
+        "https://img.shields.io/badge/dynamic/json"
+        f"?url={raw_url}&query=%24.message&label={encoded_label}&color={encoded_color}"
+    )
 
 
 def mermaid_xychart(history: list[dict[str, Any]]) -> str:
@@ -122,8 +127,10 @@ def mermaid_xychart(history: list[dict[str, Any]]) -> str:
 
 
 def render_stats_section(latest: dict[str, Any], history: list[dict[str, Any]]) -> str:
-    pairs_badge = endpoint_url(ENDPOINT_PAIRS_PATH)
-    chars_badge = endpoint_url(ENDPOINT_CHARS_PATH)
+    pairs_badge = dynamic_badge_url(ENDPOINT_PAIRS_PATH, label="post-pairs", color="blue")
+    chars_badge = dynamic_badge_url(
+        ENDPOINT_CHARS_PATH, label="total-content-chars", color="6f42c1"
+    )
     release_badge = "https://img.shields.io/github/v/release/ttw225/blog?display_name=tag"
     release_link = "https://github.com/ttw225/blog/releases/latest"
 
