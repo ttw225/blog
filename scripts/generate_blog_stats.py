@@ -116,7 +116,7 @@ def mermaid_xychart(history: list[dict[str, Any]]) -> str:
         [
             "```mermaid",
             "xychart-beta",
-            '  title "Post Pairs and Total Content Chars (Last 10 snapshots)"',
+            '  title "Post Pairs and Total Content Chars (All snapshots)"',
             f"  x-axis [{', '.join(dates)}]",
             f'  y-axis "Count" 0 --> {y_max}',
             f"  bar [{', '.join(pairs)}]",
@@ -126,7 +126,7 @@ def mermaid_xychart(history: list[dict[str, Any]]) -> str:
     )
 
 
-def render_stats_section(latest: dict[str, Any], history: list[dict[str, Any]]) -> str:
+def render_stats_section(latest: dict[str, Any]) -> str:
     pairs_badge = dynamic_badge_url(ENDPOINT_PAIRS_PATH, label="post-pairs", color="blue")
     chars_badge = dynamic_badge_url(
         ENDPOINT_CHARS_PATH, label="total-content-chars", color="6f42c1"
@@ -154,7 +154,7 @@ def render_stats_section(latest: dict[str, Any], history: list[dict[str, Any]]) 
         "",
         "Trend (all snapshots):",
         "",
-        mermaid_xychart(history),
+        mermaid_xychart(read_history()),
     ]
     return "\n".join(lines)
 
@@ -218,7 +218,7 @@ def main() -> None:
     history = append_history(latest)
     if not history:
         history = [latest]
-    section = render_stats_section(latest, history)
+    section = render_stats_section(latest)
     update_readme(section)
 
 
