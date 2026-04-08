@@ -1,3 +1,13 @@
+## v0.2.1 (2026-04-08)
+
+### CI
+
+- **site**: use PAT to pass git push (#6)
+
+### Chore
+
+- **site**: improve code block css style (#8)
+
 ## v0.2.0 (2026-04-07)
 
 ### Feat
