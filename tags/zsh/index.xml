@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zsh on Peter Wang</title><link>https://ttw225.github.io/blog/tags/zsh/</link><description>Recent content in Zsh on Peter Wang</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>peter86225+blog@gmail.com (Peter Wang)</managingEditor><webMaster>peter86225+blog@gmail.com (Peter Wang)</webMaster><copyright>© 2026 Peter. All rights reserved.</copyright><lastBuildDate>Thu, 09 Apr 2026 17:56:04 +0800</lastBuildDate><atom:link href="https://ttw225.github.io/blog/tags/zsh/index.xml" rel="self" type="application/rss+xml"/><item><title>更有效率的複製與貼上終端機輸出</title><link>https://ttw225.github.io/blog/posts/terminal-copy-paste/</link><pubDate>Thu, 09 Apr 2026 16:42:24 +0800</pubDate><author>peter86225+blog@gmail.com (Peter Wang)</author><guid>https://ttw225.github.io/blog/posts/terminal-copy-paste/</guid><description>&lt;h2 class="relative group"&gt;常見情境
+ &lt;div id="常見情境" class="anchor"&gt;&lt;/div&gt;
+ 
+ &lt;span
+ class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+ &lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e8%a6%8b%e6%83%85%e5%a2%83" aria-label="定位點"&gt;#&lt;/a&gt;
+ &lt;/span&gt;
+ 
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;指令產出的大量資訊不好閱讀，卻又對解決 bug 至關重要&lt;/li&gt;
+&lt;li&gt;想把 terminal 中所有的資訊一股腦貼給 AI 工具&lt;/li&gt;
+&lt;li&gt;terminal 過長的資訊不方便複製&lt;/li&gt;
+&lt;li&gt;terminal 中超過一頁的資訊無法用滾動的方式全部複製&lt;/li&gt;
+&lt;li&gt;GitHub 開 Issues 時被要求貼上指定指令的結果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 class="relative group"&gt;macOS 內建工具：&lt;code&gt;pbcopy&lt;/code&gt; 與 &lt;code&gt;pbpaste&lt;/code&gt;
+ &lt;div id="macos-內建工具pbcopy-與-pbpaste" class="anchor"&gt;&lt;/div&gt;
+ 
+ &lt;span
+ class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+ &lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#macos-%e5%85%a7%e5%bb%ba%e5%b7%a5%e5%85%b7pbcopy-%e8%88%87-pbpaste" aria-label="定位點"&gt;#&lt;/a&gt;
+ &lt;/span&gt;
+ 
+&lt;/h2&gt;
+&lt;p&gt;macOS 內建 &lt;code&gt;pbcopy&lt;/code&gt; 與 &lt;code&gt;pbpaste&lt;/code&gt;，可以直接串接 shell pipeline。&lt;/p&gt;</description></item></channel></rss>

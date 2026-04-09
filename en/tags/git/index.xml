@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Peter Wang</title><link>https://ttw225.github.io/blog/en/tags/git/</link><description>Recent content in Git on Peter Wang</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>peter86225+web@gmail.com (Peter Wang)</managingEditor><webMaster>peter86225+web@gmail.com (Peter Wang)</webMaster><copyright>© 2026 Peter. All rights reserved.</copyright><lastBuildDate>Thu, 09 Apr 2026 17:56:04 +0800</lastBuildDate><atom:link href="https://ttw225.github.io/blog/en/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>A Better Way to Copy and Paste Terminal Output</title><link>https://ttw225.github.io/blog/en/posts/terminal-copy-paste/</link><pubDate>Thu, 09 Apr 2026 16:42:23 +0800</pubDate><author>peter86225+web@gmail.com (Peter Wang)</author><guid>https://ttw225.github.io/blog/en/posts/terminal-copy-paste/</guid><description>&lt;h2 class="relative group"&gt;Common pain points
+ &lt;div id="common-pain-points" class="anchor"&gt;&lt;/div&gt;
+ 
+ &lt;span
+ class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+ &lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#common-pain-points" aria-label="Anchor"&gt;#&lt;/a&gt;
+ &lt;/span&gt;
+ 
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Command output is long and hard to read, but critical for debugging.&lt;/li&gt;
+&lt;li&gt;You want to paste full terminal context into AI tools.&lt;/li&gt;
+&lt;li&gt;Long terminal output is annoying to select manually.&lt;/li&gt;
+&lt;li&gt;Output longer than one screen is difficult to copy completely by scrolling.&lt;/li&gt;
+&lt;li&gt;GitHub issues often ask for full command output.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 class="relative group"&gt;Built-in macOS tools: &lt;code&gt;pbcopy&lt;/code&gt; and &lt;code&gt;pbpaste&lt;/code&gt;
+ &lt;div id="built-in-macos-tools-pbcopy-and-pbpaste" class="anchor"&gt;&lt;/div&gt;
+ 
+ &lt;span
+ class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+ &lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#built-in-macos-tools-pbcopy-and-pbpaste" aria-label="Anchor"&gt;#&lt;/a&gt;
+ &lt;/span&gt;
+ 
+&lt;/h2&gt;
+&lt;p&gt;macOS ships with &lt;code&gt;pbcopy&lt;/code&gt; and &lt;code&gt;pbpaste&lt;/code&gt;, which work nicely with shell pipelines.&lt;/p&gt;</description></item></channel></rss>
