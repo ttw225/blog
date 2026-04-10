@@ -8,6 +8,8 @@ categories: []
 featureimage: "img/terminal-copy-paste/cover.jpg"
 ---
 
+{{< postimg "cover.jpeg" >}}
+
 ## Common pain points
 
 - Command output is long and hard to read, but critical for debugging.

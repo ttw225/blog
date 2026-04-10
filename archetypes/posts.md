@@ -6,7 +6,7 @@ draft: true
 description: ""
 tags: []
 categories: []
-featureimage: "img/{{ .File.ContentBaseName }}/cover.jpg"
+featureimage: "img/{{ .File.ContentBaseName }}/cover.jpeg"
 ---
 
 {{< coming-soon >}}
