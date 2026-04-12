@@ -1,0 +1,147 @@
+---
+title: "Commitizen Argparse None Get Trap"
+slug: "commitizen-argparse-none-get-trap"
+date: 2026-04-10T11:09:13+08:00
+description: "Fixing Commitizen’s `message_length_limit` precedence trap: when the CLI omits the flag, `argparse` leaves `None`, so `dict.get()` returns early and the config file is never consulted."
+tags: ["commitizen", "argparse", "python", "cli", "testing", "open-source"]
+categories: ["open-source"]
+featureimage: "img/commitizen-argparse-none-get-trap/cover.jpeg"
+---
+
+> [!NOTE]
+> **Issue and PR are open for review**  
+> Issue: [commitizen-tools/commitizen#1899](https://github.com/commitizen-tools/commitizen/issues/1899)  
+> PR: [commitizen-tools/commitizen#1900](https://github.com/commitizen-tools/commitizen/pull/1900)  
+> The fix rewrites how `message_length_limit` is assigned and handles `None` explicitly.
+
+If `message_length_limit` is set in `pyproject.toml`, it should apply to `cz commit` / `cz check`. In practice, the configured value is ignored.
+
+Below I use `commit` as the main example; `check` has the same issue.
+
+## Misusing `get()`
+
+Key snippet from the original implementation:
+
+```python {title="commitizen/commands/commit.py"}
+self.max_msg_length = arguments.get(
+    "message_length_limit", config.settings.get("message_length_limit", 0)
+```
+
+At first glance this suggests `CLI > config > 0`, but that is not what happens.
+
+### Trap 1: `add_argument` defaults to `None`, and the key is always there
+
+Without an explicit `default`, `argparse` still puts the argument on the namespace; its value is just `None`.
+
+So when the user does not pass `-l`, `arguments["message_length_limit"]` is `None`, not “missing.”
+
+That makes `arguments.get("message_length_limit", ...)` return `None` immediately, so the fallback never runs.
+
+In that situation the code is effectively:
+
+```python
+self.max_msg_length = arguments.get("message_length_limit")
+```
+
+### Trap 2: `config.settings["message_length_limit"]` always exists
+
+`config.settings` is seeded from `DEFAULT_SETTINGS`, then overlaid with user config.
+
+In `DEFAULT_SETTINGS`, `message_length_limit` defaults to `0`:
+
+```python {title="commitizen/defaults.py"}
+"message_length_limit": 0,  # 0 for no limit
+```
+
+So for `config.settings.get("message_length_limit", 0)`, the `0` fallback is almost never reached.
+
+## Back to the source code
+
+### How `commit` defines the CLI argument
+
+```python {title="commitizen/cli.py"}
+...
+{
+    "name": ["-l", "--message-length-limit"],
+    "type": int,
+    "help": "Set the length limit of the commit message; 0 for no limit.",
+},
+...
+```
+
+With no `default`, omitting `-l/--message-length-limit` yields `None`.
+
+### The subject-length check
+
+```python {title="commitizen/commands/commit.py"}
+def _validate_subject_length(self, message: str) -> None:
+    message_length_limit = self.arguments.get(
+        "message_length_limit", self.config.settings.get("message_length_limit", 0)
+    )
+    # By the contract, message_length_limit is set to 0 for no limit
+    if message_length_limit is None or message_length_limit <= 0:
+        return
+```
+
+| CLI value provided | Config value provided | What you actually get | Matches intent |
+| :-----: | :-----: | :-----: | :-----: |
+| Yes | No | CLI value | ✅ |
+| No | No | `None`, treated as no limit | ✅ (accidentally OK) |
+| No | Yes | Still `None`, config skipped | ❌ |
+| Yes | Yes | CLI value | ✅ |
+
+The flaw is easy to miss because the next guard does this:
+
+```python
+if message_length_limit is None or message_length_limit <= 0:
+    return
+```
+
+So wrong precedence can still look fine in many cases.
+
+### How to fix it
+
+Split `get()` from the fallback and branch on `None` explicitly:
+
+```python
+message_length_limit: int | None = arguments.get("message_length_limit")
+self.message_length_limit: int = (
+    message_length_limit
+    if message_length_limit is not None
+    else config.settings["message_length_limit"]
+)
+```
+
+Takeaways:
+
+1. Read `arguments["message_length_limit"]`, then test for `None`.
+2. Use `is not None`; a bare `if message_length_limit` would wrongly treat `0` as unset.
+3. Fall back to `config.settings["message_length_limit"]` only when the CLI did not supply a value.
+4. That restores the intended order: `CLI > config > default(0)`.
+
+## Why tests did not catch it
+
+### How tests are written
+
+A typical `commit` test looks like:
+
+```python {title="tests/commands/test_commit_command.py"}
+commands.Commit(config, {"message_length_limit": message_length})()
+```
+
+The first argument, `config`, is fine. The blind spot is the second (mock CLI args):
+
+- tests often pass a dict with an explicit value,
+- but omit the realistic case where the user did not pass the flag and the value is `None`.
+
+In short, tests did not model `{"message_length_limit": None}`.
+
+### What to add in tests
+
+Covering the `None` case makes the “config ignored” bug reproducible and prevents regressions.
+
+## Conclusion
+
+This kind of bug is common but subtle: `argparse` means “key present, value `None`,” which clashes with `dict.get()` fallback semantics. Mix in how `0` and `None` behave in conditionals, and you get easy-to-miss logic holes.
+
+More detail in the PR: [commitizen-tools/commitizen#1900](https://github.com/commitizen-tools/commitizen/pull/1900)
