@@ -8,6 +8,8 @@ categories: ["open-source"]
 featureimage: "img/commitizen-argparse-none-get-trap/cover.jpeg"
 ---
 
+{{< postimg "cover.jpeg" >}}
+
 > [!NOTE]
 > **已發 Issue 和 PR，尚待審閱**  
 > Issue: [commitizen-tools/commitizen#1899](https://github.com/commitizen-tools/commitizen/issues/1899)  
