@@ -1,3 +1,16 @@
+## v0.4.0 (2026-04-15)
+
+### Feat
+
+- **open-source**: add commitizen-argparse-none-get-trap
+
+### Docs
+
+- **open-source**: add image to commitizen-argparse-none-get-trap
+- **open-source**: insert document card to open-source page
+- **open-source**: add en version of commitizen-argparse-none-get-trap
+- **post**: improve terminal-copy-paste and templates
+
 ## v0.3.0 (2026-04-09)
 
 ### Feat
