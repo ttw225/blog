@@ -59,6 +59,8 @@ Work in progress:
   - Add a live preview for the commit subject in interactive mode
 - [Fix and improve test: message_length_limit](https://github.com/commitizen-tools/commitizen/pull/1900)
   - Fix and extend tests around the `message_length_limit` setting
+  - Featured write-up:
+{{< article link="/blog/en/posts/commitizen-argparse-none-get-trap/" showSummary=false compactSummary=false >}}
 
 ### Merged PR
 

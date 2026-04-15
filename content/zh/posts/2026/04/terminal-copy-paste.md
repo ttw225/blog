@@ -5,8 +5,10 @@ date: 2026-04-09T16:42:24+08:00
 description: "整理 macOS terminal 的實用複製貼上技巧，透過 pbcopy/pbpaste 與 shell function 快速複製指令輸出，方便貼給 AI 工具、GitHub issue 與 commit 流程。"
 tags: ["macOS", "terminal", "clipboard", "pbcopy", "pbpaste", "shell", "zsh", "git"]
 categories: []
-featureimage: "img/terminal-copy-paste/cover.jpg"
+featureimage: "img/terminal-copy-paste/cover.jpeg"
 ---
+
+{{< postimg "cover.jpeg" >}}
 
 ## 常見情境
 
