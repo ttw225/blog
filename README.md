@@ -11,24 +11,24 @@ This repo builds a bilingual personal blog with Hugo (extended) using the Blowfi
 ![post-pairs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-pairs.json&query=%24.message&label=post-pairs&color=blue)
 ![total-content-chars](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-chars.json&query=%24.message&label=total-content-chars&color=6f42c1)
 
-Last updated: `2026-04-09`
+Last updated: `2026-04-15`
 Counting rule: content chars are non-whitespace characters after front matter removal.
 
 | Metric | EN | ZH | Total |
 | --- | ---: | ---: | ---: |
-| Posts | 3 | 3 | 6 |
-| Content chars (no whitespace) | 6283 | 4759 | 11042 |
-| Paired posts | - | - | 3 |
+| Posts | 4 | 4 | 8 |
+| Content chars (no whitespace) | 10339 | 7885 | 18224 |
+| Paired posts | - | - | 4 |
 
 Trend (all snapshots):
 
 ```mermaid
 xychart-beta
   title "Post Pairs and Total Content Chars (All snapshots)"
-  x-axis ["03-27", "04-07", "04-08", "04-09"]
-  y-axis "Count" 0 --> 11142
-  bar [0, 2, 2, 3]
-  line [0, 8506, 8506, 11042]
+  x-axis ["03-27", "04-07", "04-08", "04-09", "04-15"]
+  y-axis "Count" 0 --> 18324
+  bar [0, 2, 2, 3, 4]
+  line [0, 8506, 8506, 11042, 18224]
 ```
 <!-- stats:auto:end -->
 
