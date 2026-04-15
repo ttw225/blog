@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MacOS on Peter Wang</title><link>https://ttw225.github.io/blog/en/tags/macos/</link><description>Recent content in MacOS on Peter Wang</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>peter86225+web@gmail.com (Peter Wang)</managingEditor><webMaster>peter86225+web@gmail.com (Peter Wang)</webMaster><copyright>© 2026 Peter. All rights reserved.</copyright><lastBuildDate>Thu, 09 Apr 2026 17:56:04 +0800</lastBuildDate><atom:link href="https://ttw225.github.io/blog/en/tags/macos/index.xml" rel="self" type="application/rss+xml"/><item><title>A Better Way to Copy and Paste Terminal Output</title><link>https://ttw225.github.io/blog/en/posts/terminal-copy-paste/</link><pubDate>Thu, 09 Apr 2026 16:42:23 +0800</pubDate><author>peter86225+web@gmail.com (Peter Wang)</author><guid>https://ttw225.github.io/blog/en/posts/terminal-copy-paste/</guid><description>&lt;h2 class="relative group"&gt;Common pain points
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MacOS on Peter Wang</title><link>https://ttw225.github.io/blog/en/tags/macos/</link><description>Recent content in MacOS on Peter Wang</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>peter86225+web@gmail.com (Peter Wang)</managingEditor><webMaster>peter86225+web@gmail.com (Peter Wang)</webMaster><copyright>© 2026 Peter. All rights reserved.</copyright><lastBuildDate>Fri, 10 Apr 2026 11:10:08 +0800</lastBuildDate><atom:link href="https://ttw225.github.io/blog/en/tags/macos/index.xml" rel="self" type="application/rss+xml"/><item><title>A Better Way to Copy and Paste Terminal Output</title><link>https://ttw225.github.io/blog/en/posts/terminal-copy-paste/</link><pubDate>Thu, 09 Apr 2026 16:42:23 +0800</pubDate><author>peter86225+web@gmail.com (Peter Wang)</author><guid>https://ttw225.github.io/blog/en/posts/terminal-copy-paste/</guid><description>&lt;figure&gt;
+ &lt;img
+ class="my-0 rounded-md"
+ loading="lazy"
+ decoding="async"
+ fetchpriority="auto"
+ alt="cover.jpeg"
+ width="922"
+ height="695"
+ src="https://ttw225.github.io/blog/img/terminal-copy-paste/cover_hu_5635fbae5bc30ba1.jpeg"
+ srcset="https://ttw225.github.io/blog/img/terminal-copy-paste/cover_hu_5635fbae5bc30ba1.jpeg 800w,/blog/img/terminal-copy-paste/cover_hu_eaf59cabaedd3603.jpeg 1280w"
+ sizes="(min-width: 768px) 50vw, 65vw"
+ data-zoom-src="https://ttw225.github.io/blog/img/terminal-copy-paste/cover.jpeg"
+ /&gt;
+
+
+&lt;/figure&gt;
+
+
+&lt;h2 class="relative group"&gt;Common pain points
  &lt;div id="common-pain-points" class="anchor"&gt;&lt;/div&gt;
  
  &lt;span
