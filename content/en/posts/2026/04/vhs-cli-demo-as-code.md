@@ -5,7 +5,7 @@ date: 2026-04-17T14:04:02+08:00
 description: "Use VHS `.tape` files to generate reproducible CLI screenshots and GIF demos for docs with less manual effort."
 tags: ["vhs", "cli", "documentation", "automation", "gif"]
 categories: ["open-source"]
-featureimage: "img/vhs-cli-demo-as-code/cover.jpeg"
+featureimage: "img/vhs-cli-demo-as-code/cover.gif"
 ---
 
 {{< postimg "cover.gif" >}}
@@ -147,6 +147,19 @@ Commitizen runs image generation in GitHub Actions, where the environment is cle
 If you run similar scripts locally, make sure the code is trusted.
 
 Or use Docker to isolate the execution environment.
+
+## Limits of GIF capture and a practical workaround
+
+In my local tests, terminal image commands such as `imgcat`, `chafa`, and `viu` are not reliably captured in VHS-generated GIF output.
+
+A more stable approach is to use a two-stage presentation:
+
+1. Use VHS GIF to record only the workflow:
+   - Run `vhs demo.tape`
+   - Verify outputs with `ls -lh demo.gif` and `file demo.gif`
+2. Present `demo.gif` itself as a separate asset (or stitch it in post-processing)
+
+This keeps both goals clear: reproducible CLI workflow capture and visible final GIF output.
 
 ## Wrap-up
 

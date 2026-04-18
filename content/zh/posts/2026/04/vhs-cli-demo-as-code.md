@@ -5,7 +5,7 @@ date: 2026-04-17T14:04:03+08:00
 description: "用 VHS 把 CLI 操作流程寫成 `.tape`，穩定自動產生截圖與 GIF，讓文件維護更省力。"
 tags: ["vhs", "cli", "documentation", "automation", "gif"]
 categories: ["open-source"]
-featureimage: "img/vhs-cli-demo-as-code/cover.jpeg"
+featureimage: "img/vhs-cli-demo-as-code/cover.gif"
 ---
 
 {{< postimg "cover.gif" >}}
@@ -144,6 +144,19 @@ flowchart TD
 如果要在自己的電腦上執行，請務必確認執行內容是受信任的程式碼。
 
 或是建議使用 Docker 建立隔離環境來執行。
+
+## VHS 錄製 GIF 的限制與實務解法
+
+我後來實測發現，`imgcat`、`chafa`、`viu` 這類「在終端顯示圖片」的方式，不一定能穩定出現在 VHS 最終輸出的 GIF 中。
+
+實務上比較穩定的做法是採「兩段式展示」：
+
+1. 第一段（VHS GIF）只錄製流程本身，例如：
+   - 執行 `vhs demo.tape`
+   - 用 `ls -lh demo.gif`、`file demo.gif` 驗證產物
+2. 第二段再直接展示 `demo.gif` 成品（獨立嵌入或後製拼接）
+
+這樣可以保留「流程可重現」與「成果可視化」兩個目標，同時避免被 terminal image protocol 的相容性卡住。
 
 ## 小結
 
