@@ -75,4 +75,4 @@ googleAnalytics = "G-DB0LMGC5S9"
       weight = 10
 
 [versions]
-  [versions."v0.4.0"]
+  [versions."v0.5.0"]

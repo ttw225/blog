@@ -1,3 +1,19 @@
+## v0.5.0 (2026-04-22)
+
+### Feat
+
+- **open-source**: add VHS demo article and site analytics updates #11
+- **open-source**: add VHS introduction
+
+### Docs
+
+- **open-source**: update commitizen PR status: 1906 Merge
+- **open-source**: add gif for vhs-cli-demo-as-code
+
+### Chore
+
+- **site**: add googleAnalytics
+
 ## v0.4.0 (2026-04-15)
 
 ### Feat
