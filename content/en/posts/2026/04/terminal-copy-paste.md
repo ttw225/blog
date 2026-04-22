@@ -5,7 +5,7 @@ date: 2026-04-09T16:42:23+08:00
 description: "A practical guide to copying terminal output on macOS with pbcopy/pbpaste and shell functions, so you can quickly share logs with AI tools, GitHub issues, and commit workflows."
 tags: ["macOS", "terminal", "clipboard", "pbcopy", "pbpaste", "shell", "zsh", "git"]
 categories: []
-featureimage: "img/terminal-copy-paste/cover.jpg"
+featureimage: "img/terminal-copy-paste/cover.jpeg"
 ---
 
 {{< postimg "cover.jpeg" >}}

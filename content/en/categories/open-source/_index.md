@@ -52,9 +52,6 @@ Work in progress:
 
 - [Feat: Validate message_length_limit is non-negative](https://github.com/commitizen-tools/commitizen/pull/1908)
   - Require `message_length_limit >= 0` explicitly
-- [Refactor: Doc(images) VHS tapes with shared snippets](https://github.com/commitizen-tools/commitizen/pull/1906)
-  - Refactor VHS tape scripts used for documentation images
-  - Extract shared snippets to remove duplication and make the docs easier to follow
 - [Feat: add live subject preview for interactive commit (--preview)](https://github.com/commitizen-tools/commitizen/pull/1902)
   - Add a live preview for the commit subject in interactive mode
 - [Fix and improve test: message_length_limit](https://github.com/commitizen-tools/commitizen/pull/1900)
@@ -66,6 +63,11 @@ Work in progress:
 
 Merged into Commitizen:
 
+- [Refactor: Doc(images) VHS tapes with shared snippets](https://github.com/commitizen-tools/commitizen/pull/1906)
+  - Refactor VHS tape scripts used for documentation images
+  - Extract shared snippets to remove duplication and make the docs easier to follow
+  - Related Post:
+{{< article link="/blog/en/posts/vhs-cli-demo-as-code/" showSummary=false compactSummary=false >}}
 - [docs: document and demo use_shortcuts keyboard shortcuts](https://github.com/commitizen-tools/commitizen/pull/1891)
   - Improve `use_shortcuts` documentation and examples
 - [CI: make release workflows fork-friendly](https://github.com/commitizen-tools/commitizen/pull/1889)
