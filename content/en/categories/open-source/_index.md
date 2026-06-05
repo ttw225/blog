@@ -83,8 +83,8 @@ Merged into Commitizen:
 
 [PyCon Taiwan](https://pycon.tw) promotes Python and open source in Taiwan with a major conference each year. I joined as a volunteer in 2025.
 
-- PyCon TW 2025: Program team, Communications team
 - PyCon TW 2026: Program team, Communications team
+- PyCon TW 2025: Program team, Communications team
 
 ---
 
