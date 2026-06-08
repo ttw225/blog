@@ -11,7 +11,7 @@ This repo builds a bilingual personal blog with Hugo (extended) using the Blowfi
 ![post-pairs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-pairs.json&query=%24.message&label=post-pairs&color=blue)
 ![total-content-chars](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fttw225%2Fblog%2Fmain%2Fdocs%2Fstats-endpoint-chars.json&query=%24.message&label=total-content-chars&color=6f42c1)
 
-Last updated: `2026-04-22`
+Last updated: `2026-06-08`
 Counting rule: content chars are non-whitespace characters after front matter removal.
 
 | Metric | EN | ZH | Total |
@@ -25,10 +25,10 @@ Trend (all snapshots):
 ```mermaid
 xychart-beta
   title "Post Pairs and Total Content Chars (All snapshots)"
-  x-axis ["03-27", "04-07", "04-08", "04-09", "04-15", "04-22"]
+  x-axis ["03-27", "04-07", "04-08", "04-09", "04-15", "04-22", "06-08"]
   y-axis "Count" 0 --> 25800
-  bar [0, 2, 2, 3, 4, 5]
-  line [0, 8506, 8506, 11042, 18224, 25700]
+  bar [0, 2, 2, 3, 4, 5, 5]
+  line [0, 8506, 8506, 11042, 18224, 25700, 25700]
 ```
 <!-- stats:auto:end -->
 
