@@ -23,18 +23,12 @@ groupByYear: false
 CPython 是 [Python](https://www.python.org) 的參考實作，由大量活躍的開發者共同維護。
 我開始投入 CPython，是受到 [PyCon TW](https://pycon.tw) 與 [高見龍大大](https://pythonbook.cc/about) 衝刺開發活動的啟發。教材可參考 [《為你自己學 Python》](https://pythonbook.cc/chapters/basic/introduction) 的介紹章節。
 
-### Open PR
-
-這些貢獻正在進行中：
-
-- [gh-139819: rlcompleter – avoid suggesting attributes not accessible on instances](https://github.com/python/cpython/pull/139820)
-  - 優化 `rlcompleter`：自動補全時略過在實例上無法存取的屬性
-  - 狀態：仍在等待 review，討論串很安靜 QQ
-
 ### Merged PR
 
 這些貢獻已被合併進 CPython：
 
+- [gh-139819: rlcompleter – avoid suggesting attributes not accessible on instances](https://github.com/python/cpython/pull/139820)
+  - 優化 `rlcompleter`：自動補全時略過在實例上無法存取的屬性
 - [gh-139487: doc(enum): add missing imports for standalone doctest examples](https://github.com/python/cpython/pull/139488)
   - 在 enum 說明文件中，為可獨立執行的 doctest 範例補上缺少的 import
 - [gh-139743: avoid import-time print in test_sqlite3 that leaks into help('modules')](https://github.com/python/cpython/pull/139746)

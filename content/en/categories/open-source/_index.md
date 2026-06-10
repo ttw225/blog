@@ -21,18 +21,12 @@ This page collects my open-source contributions and the projects I care about mo
 
 CPython is the reference implementation of [Python](https://www.python.org), carried forward by a large, active community of contributors. I started contributing after [PyCon Taiwan](https://pycon.tw) and the sprint events run by [Eddie Kao](https://pythonbook.cc/about) (高見龍). See also the [introduction chapter](https://pythonbook.cc/chapters/basic/introduction) of *為你自己學 Python*.
 
-### Open PR
-
-Work in progress:
-
-- [gh-139819: rlcompleter – avoid suggesting attributes not accessible on instances](https://github.com/python/cpython/pull/139820)
-  - Tighten `rlcompleter` so tab completion skips attributes that are not accessible on instances
-  - Status: still waiting for review—quiet thread
-
 ### Merged PR
 
 Merged into CPython:
 
+- [gh-139819: rlcompleter – avoid suggesting attributes not accessible on instances](https://github.com/python/cpython/pull/139820)
+  - Tighten `rlcompleter` so tab completion skips attributes that are not accessible on instances
 - [gh-139487: doc(enum): add missing imports for standalone doctest examples](https://github.com/python/cpython/pull/139488)
   - Add missing imports to standalone doctest examples in the enum docs
 - [gh-139743: avoid import-time print in test_sqlite3 that leaks into help('modules')](https://github.com/python/cpython/pull/139746)
