@@ -1,7 +1,7 @@
 # Project task entrypoint. Run `make` or `make help` to list targets.
 # Add "## description" at end of a target line to show it in help.
 
-.PHONY: help dev build check ci check-double-ext check-bilingual check-pageref check-config stats theme-update post open-source
+.PHONY: help setup dev build check ci check-double-ext check-bilingual check-pageref check-config stats theme-update post open-source
 
 # First target is default
 help: ## Show this help (default)
@@ -9,7 +9,20 @@ help: ## Show this help (default)
 	@echo ""
 	@awk -F'## ' '/^[a-zA-Z0-9_-]+:.*## / {split($$1, a, ":"); printf "  %-15s %s\n", a[1], $$2}' $(MAKEFILE_LIST)
 
-dev: ## Start Hugo dev server for local preview
+setup: ## Install local project dependencies and verify Hugo
+	@command -v hugo >/dev/null 2>&1 || { \
+		echo "Hugo is missing. Install it with: brew install hugo"; \
+		exit 1; \
+	}
+	@hugo version | grep -q '+extended' || { \
+		hugo version; \
+		echo "Hugo extended is required. Install it with: brew install hugo"; \
+		exit 1; \
+	}
+	git submodule update --init --recursive
+	@echo "Environment ready."
+
+dev: setup ## Start Hugo dev server for local preview
 	hugo server
 
 build: ## Build site to public/ (--gc --minify)
