@@ -1,3 +1,19 @@
+## v0.5.1 (2026-06-11)
+
+### Docs
+
+- **open-source**: add Wren AI PR write-ups and category section
+- **open-source**: mark cpython/rlcompleter PR as merged
+- **open-source**: pycon tw
+
+### Style
+
+- **open-source**: pycon tw
+
+### Chore
+
+- **tooling**: add make setup to verify Hugo and init submodules before dev
+
 ## v0.5.0 (2026-04-22)
 
 ### Feat
