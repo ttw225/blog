@@ -15,6 +15,40 @@ groupByYear: false
 
 This page collects my open-source contributions and the projects I care about most.
 
+## Wren AI
+
+{{< github repo="Canner/WrenAI" showThumbnail=false >}}
+
+[Wren AI](https://github.com/Canner/WrenAI) is an open-source AI agent context layer. Through an MDL semantic model, it supplies the business semantics, examples, and memory that a database schema lacks, so AI can produce trustworthy SQL, charts, and analyses under access and query-rule constraints.
+
+### Open PR
+
+Work in progress:
+
+- [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
+  - Adds the missing Cube creation flow to the official [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) and corrects the examples so the YAML / CLI match the sample data's field design and the implementation
+
+### Merged PR
+
+Merged into Wren AI:
+
+- [fix(memory): avoid identifier columns in aggregation seed queries](https://github.com/Canner/WrenAI/pull/2358)
+  - `wren memory index` auto-generates seed NL→SQL pairs into a vector store for `recall` to retrieve by similarity. Seed generation treated foreign keys like `customer_id` as summable metrics, producing meaningless `SUM(customer_id)` seeds that degraded retrieval; the fix excludes foreign-key / `*_id` columns
+  - Featured write-up:
+{{< article link="/blog/en/posts/wren-memory-seed-query-noise/" showSummary=false compactSummary=false >}}
+- [perf(cli): use find_spec instead of eager import to detect memory extra](https://github.com/Canner/WrenAI/pull/2352)
+  - Switched how the CLI detects the optional extra — from eagerly importing the whole ML stack to `find_spec` — making `wren --version` / `--help` ~6–11x faster, with large packages like torch no longer entering `sys.modules`
+  - Featured write-up:
+{{< article link="/blog/en/posts/wren-cli-startup-find-spec/" showSummary=false compactSummary=false >}}
+- [docs(wren): document macOS memory first-run scan](https://github.com/Canner/WrenAI/pull/2354)
+  - Documented that the real source of the ~50s first run on macOS is XProtect's one-time scan of unsigned native binaries, rather than a defect in wren itself
+- [fix(wren): load cubes from folder-per-entity layout](https://github.com/Canner/WrenAI/pull/2350)
+  - Fixed the folder layout the cube loader scans: upgraded from v1 `cubes/<name>.yml` to v2 `cubes/<name>/metadata.yml`
+- [ci(release): sync wrenai version in uv.lock](https://github.com/Canner/WrenAI/pull/2351)
+  - Each release now automatically syncs the `wrenai` version in `uv.lock`
+
+---
+
 ## CPython
 
 {{< github repo="python/cpython" showThumbnail=false >}}
