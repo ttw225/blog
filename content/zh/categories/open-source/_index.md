@@ -26,13 +26,13 @@ groupByYear: false
 
 進行中：
 
-- [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
-  - 在官方 [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) 文件中補上缺少的 Cube 建立流程，並修正範例寫法，讓 YAML / CLI 範例符合範例資料的欄位設計、與實作一致
 
 ### Merged PR
 
 已合併進 Wren AI：
 
+- [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
+  - 在官方 [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) 文件中補上缺少的 Cube 建立流程，並修正範例寫法，讓 YAML / CLI 範例符合範例資料的欄位設計、與實作一致
 - [fix(memory): avoid identifier columns in aggregation seed queries](https://github.com/Canner/WrenAI/pull/2358)
   - `wren memory index` 會自動生成一批 seed NL→SQL pair 寫入向量庫，供之後的 `recall` 以相似度檢索。但 seed 生成把 `customer_id` 這類 foreign key 當成可加總的度量，生成 `SUM(customer_id)` 這類無意義 seed 並降低檢索品質；修正改為排除 foreign key / `*_id` 欄位
   - 相關文章:
