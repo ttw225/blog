@@ -26,6 +26,8 @@ groupByYear: false
 
 進行中：
 
+- [chore(wren-core-py): migrate from Poetry to uv](https://github.com/Canner/WrenAI/pull/2363)
+  - `core/wren-core-py` 是 repo 裡唯一仍用 Poetry 的 Python 模組，其餘已是 uv；原先建置 Rust binding 也得先走 Poetry 環境跑 maturin。PR 把這條 dev/build 流程改到 uv（build backend 仍是 maturin），並對齊 justfile 與 CI，讓 Rust→binding→CLI 整條鏈不再混用兩套工具。
 
 ### Merged PR
 

@@ -25,6 +25,8 @@ This page collects my open-source contributions and the projects I care about mo
 
 Work in progress:
 
+- [chore(wren-core-py): migrate from Poetry to uv](https://github.com/Canner/WrenAI/pull/2363)
+  - `core/wren-core-py` was the only Python module still on Poetry while `core/wren` and the SDKs use uv—the Rust binding build also ran maturin inside that Poetry env. The PR moves the dev/build flow to uv (maturin unchanged), aligns justfile and CI, and lets contributors build the Rust→binding→CLI chain without juggling two toolchains.
 
 ### Merged PR
 
