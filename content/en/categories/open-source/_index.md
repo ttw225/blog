@@ -25,13 +25,15 @@ This page collects my open-source contributions and the projects I care about mo
 
 Work in progress:
 
-- [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
-  - Adds the missing Cube creation flow to the official [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) and corrects the examples so the YAML / CLI match the sample data's field design and the implementation
+- [chore(wren-core-py): migrate from Poetry to uv](https://github.com/Canner/WrenAI/pull/2363)
+  - `core/wren-core-py` was the only Python module still on Poetry while `core/wren` and the SDKs use uv—the Rust binding build also ran maturin inside that Poetry env. The PR moves the dev/build flow to uv (maturin unchanged), aligns justfile and CI, and lets contributors build the Rust→binding→CLI chain without juggling two toolchains.
 
 ### Merged PR
 
 Merged into Wren AI:
 
+- [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
+  - Adds the missing Cube creation flow to the official [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) and corrects the examples so the YAML / CLI match the sample data's field design and the implementation
 - [fix(memory): avoid identifier columns in aggregation seed queries](https://github.com/Canner/WrenAI/pull/2358)
   - `wren memory index` auto-generates seed NL→SQL pairs into a vector store for `recall` to retrieve by similarity. Seed generation treated foreign keys like `customer_id` as summable metrics, producing meaningless `SUM(customer_id)` seeds that degraded retrieval; the fix excludes foreign-key / `*_id` columns
   - Featured write-up:
