@@ -26,13 +26,15 @@ groupByYear: false
 
 進行中：
 
-- [chore(wren-core-py): migrate from Poetry to uv](https://github.com/Canner/WrenAI/pull/2363)
-  - `core/wren-core-py` 是 repo 裡唯一仍用 Poetry 的 Python 模組，其餘已是 uv；原先建置 Rust binding 也得先走 Poetry 環境跑 maturin。PR 把這條 dev/build 流程改到 uv（build backend 仍是 maturin），並對齊 justfile 與 CI，讓 Rust→binding→CLI 整條鏈不再混用兩套工具。
+- [chore(wren): separate SDK and local core install flows](https://github.com/Canner/WrenAI/pull/2375)
+  - 將 `core/wren` 的一般 Python SDK / CLI 開發安裝流程，與需要本機 Rust engine / PyO3 binding 的開發流程拆開；`just install` 回到單純 `uv sync`，另以 `just install-local` / `just use-local-core` 明確處理本機 `wren-core-py` wheel overlay，避免 lockfile sync 與本機 wheel build 混在同一條路徑。
 
 ### Merged PR
 
 已合併進 Wren AI：
 
+- [chore(wren-core-py): migrate from Poetry to uv](https://github.com/Canner/WrenAI/pull/2363)
+  - `core/wren-core-py` 是 repo 裡唯一仍用 Poetry 的 Python 模組，其餘已是 uv；原先建置 Rust binding 也得先走 Poetry 環境跑 maturin。PR 把這條 dev/build 流程改到 uv（build backend 仍是 maturin），並對齊 justfile 與 CI，讓 Rust→binding→CLI 整條鏈不再混用兩套工具。
 - [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
   - 在官方 [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) 文件中補上缺少的 Cube 建立流程，並修正範例寫法，讓 YAML / CLI 範例符合範例資料的欄位設計、與實作一致
 - [fix(memory): avoid identifier columns in aggregation seed queries](https://github.com/Canner/WrenAI/pull/2358)
