@@ -21,33 +21,28 @@ This page collects my open-source contributions and the projects I care about mo
 
 [Wren AI](https://github.com/Canner/WrenAI) is an open-source AI agent context layer. Through an MDL semantic model, it supplies the business semantics, examples, and memory that a database schema lacks, so AI can produce trustworthy SQL, charts, and analyses under access and query-rule constraints.
 
-### Open PR
-
-Work in progress:
-
-- [chore(wren): separate SDK and local core install flows](https://github.com/Canner/WrenAI/pull/2375)
-  - Separates the normal `core/wren` Python SDK / CLI development setup from the local Rust engine / PyO3 binding workflow. `just install` is now a plain `uv sync`, while `just install-local` / `just use-local-core` explicitly handle local `wren-core-py` wheel overlays, keeping lockfile sync and local wheel builds out of the same path.
-
 ### Merged PR
 
 Merged into Wren AI:
 
-- [chore(wren-core-py): migrate from Poetry to uv](https://github.com/Canner/WrenAI/pull/2363)
-  - `core/wren-core-py` was the only Python module still on Poetry while `core/wren` and the SDKs use uv—the Rust binding build also ran maturin inside that Poetry env. The PR moves the dev/build flow to uv (maturin unchanged), aligns justfile and CI, and lets contributors build the Rust→binding→CLI chain without juggling two toolchains.
-- [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
-  - Adds the missing Cube creation flow to the official [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) and corrects the examples so the YAML / CLI match the sample data's field design and the implementation
-- [fix(memory): avoid identifier columns in aggregation seed queries](https://github.com/Canner/WrenAI/pull/2358)
-  - `wren memory index` auto-generates seed NL→SQL pairs into a vector store for `recall` to retrieve by similarity. Seed generation treated foreign keys like `customer_id` as summable metrics, producing meaningless `SUM(customer_id)` seeds that degraded retrieval; the fix excludes foreign-key / `*_id` columns
-  - Featured write-up:
-{{< article link="/blog/en/posts/wren-memory-seed-query-noise/" showSummary=false compactSummary=false >}}
 - [perf(cli): use find_spec instead of eager import to detect memory extra](https://github.com/Canner/WrenAI/pull/2352)
   - Switched how the CLI detects the optional extra — from eagerly importing the whole ML stack to `find_spec` — making `wren --version` / `--help` ~6–11x faster, with large packages like torch no longer entering `sys.modules`
   - Featured write-up:
 {{< article link="/blog/en/posts/wren-cli-startup-find-spec/" showSummary=false compactSummary=false >}}
-- [docs(wren): document macOS memory first-run scan](https://github.com/Canner/WrenAI/pull/2354)
-  - Documented that the real source of the ~50s first run on macOS is XProtect's one-time scan of unsigned native binaries, rather than a defect in wren itself
+- [fix(memory): avoid identifier columns in aggregation seed queries](https://github.com/Canner/WrenAI/pull/2358)
+  - `wren memory index` auto-generates seed NL→SQL pairs into a vector store for `recall` to retrieve by similarity. Seed generation treated foreign keys like `customer_id` as summable metrics, producing meaningless `SUM(customer_id)` seeds that degraded retrieval; the fix excludes foreign-key / `*_id` columns
+  - Featured write-up:
+{{< article link="/blog/en/posts/wren-memory-seed-query-noise/" showSummary=false compactSummary=false >}}
+- [chore(wren): separate SDK and local core install flows](https://github.com/Canner/WrenAI/pull/2375)
+  - Separates the normal `core/wren` Python SDK / CLI development setup from the local Rust engine / PyO3 binding workflow. `just install` is now a plain `uv sync`, while `just install-local` / `just use-local-core` explicitly handle local `wren-core-py` wheel overlays, keeping lockfile sync and local wheel builds out of the same path.
+- [chore(wren-core-py): migrate from Poetry to uv](https://github.com/Canner/WrenAI/pull/2363)
+  - `core/wren-core-py` was the only Python module still on Poetry while `core/wren` and the SDKs use uv—the Rust binding build also ran maturin inside that Poetry env. The PR moves the dev/build flow to uv (maturin unchanged), aligns justfile and CI, and lets contributors build the Rust→binding→CLI chain without juggling two toolchains.
 - [fix(wren): load cubes from folder-per-entity layout](https://github.com/Canner/WrenAI/pull/2350)
   - Fixed the folder layout the cube loader scans: upgraded from v1 `cubes/<name>.yml` to v2 `cubes/<name>/metadata.yml`
+- [docs(wren): fix cube quickstart and align YAML/CLI examples with implementation](https://github.com/Canner/WrenAI/pull/2359)
+  - Adds the missing Cube creation flow to the official [QuickStart](https://docs.getwren.ai/oss/get_started/quickstart) and corrects the examples so the YAML / CLI match the sample data's field design and the implementation
+- [docs(wren): document macOS memory first-run scan](https://github.com/Canner/WrenAI/pull/2354)
+  - Documented that the real source of the ~50s first run on macOS is XProtect's one-time scan of unsigned native binaries, rather than a defect in wren itself
 - [ci(release): sync wrenai version in uv.lock](https://github.com/Canner/WrenAI/pull/2351)
   - Each release now automatically syncs the `wrenai` version in `uv.lock`
 
@@ -65,10 +60,10 @@ Merged into CPython:
 
 - [gh-139819: rlcompleter – avoid suggesting attributes not accessible on instances](https://github.com/python/cpython/pull/139820)
   - Tighten `rlcompleter` so tab completion skips attributes that are not accessible on instances
-- [gh-139487: doc(enum): add missing imports for standalone doctest examples](https://github.com/python/cpython/pull/139488)
-  - Add missing imports to standalone doctest examples in the enum docs
 - [gh-139743: avoid import-time print in test_sqlite3 that leaks into help('modules')](https://github.com/python/cpython/pull/139746)
   - Fix `sqlite3` tests so import-time output does not pollute `help('modules')`
+- [gh-139487: doc(enum): add missing imports for standalone doctest examples](https://github.com/python/cpython/pull/139488)
+  - Add missing imports to standalone doctest examples in the enum docs
 
 ---
 
@@ -100,14 +95,14 @@ Merged into Commitizen:
   - Extract shared snippets to remove duplication and make the docs easier to follow
   - Related Post:
 {{< article link="/blog/en/posts/vhs-cli-demo-as-code/" showSummary=false compactSummary=false >}}
-- [docs: document and demo use_shortcuts keyboard shortcuts](https://github.com/commitizen-tools/commitizen/pull/1891)
-  - Improve `use_shortcuts` documentation and examples
-- [CI: make release workflows fork-friendly](https://github.com/commitizen-tools/commitizen/pull/1889)
-  - Adjust GitHub Actions triggers so forks do not run release workflows unintentionally
-- [Doc: Clarify cz_customize deprecation warning with rationale link](https://github.com/commitizen-tools/commitizen/pull/1887)
-  - Clarify official docs around the `cz_customize` deprecation
 - [Resolve tempfile path spaces issue in git commit function](https://github.com/commitizen-tools/commitizen/pull/1039)
   - My first Commitizen contribution: fix temp-file paths that contain spaces in the Git commit flow
+- [docs: document and demo use_shortcuts keyboard shortcuts](https://github.com/commitizen-tools/commitizen/pull/1891)
+  - Improve `use_shortcuts` documentation and examples
+- [Doc: Clarify cz_customize deprecation warning with rationale link](https://github.com/commitizen-tools/commitizen/pull/1887)
+  - Clarify official docs around the `cz_customize` deprecation
+- [CI: make release workflows fork-friendly](https://github.com/commitizen-tools/commitizen/pull/1889)
+  - Adjust GitHub Actions triggers so forks do not run release workflows unintentionally
 
 ---
 
