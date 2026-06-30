@@ -1,3 +1,16 @@
+## v0.5.2 (2026-06-30)
+
+### Docs
+
+- **open-source**: promote 2375 to merged and reorder by importance
+- **open-source**: open 2375 and close 2363
+- **open-source**: wren #2363 open
+- **open-source**: wren #2359 closed
+
+### Chore
+
+- **deps**: bump actions/checkout from 6 to 7
+
 ## v0.5.1 (2026-06-11)
 
 ### Docs
