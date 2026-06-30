@@ -26,5 +26,5 @@
  &lt;/div&gt;
 
  &lt;p id="github-cb2d4343f91e1358050075a0d53f30c9-description" class="m-0 mt-2 text-md text-neutral-800 dark:text-neutral"&gt;
- Give AI agents the context to query business data correctly through the open context layer that gives AI agents grounded, governed memory, context, SQL across 20+ data sources, that helps you build agentic GenBI, text-to-sql, dashboards, and agentic analytics.
+ GenBI (Generative BI) for AI agents, an open-source, governed text-to-SQL through an open context layer that turns natural-language questions into trusted dashboards, charts, and SQL across 20+ data sources, such as BigQuery, Snowflake, PostgreSQL, ClickHouse, Amazon Redshift, Databricks and more.
  &lt;/p&gt;</description></item><item><title>Projects</title><link>https://ttw225.github.io/blog/en/categories/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>peter86225+web@gmail.com (Peter Wang)</author><guid>https://ttw225.github.io/blog/en/categories/projects/</guid><description/></item></channel></rss>
